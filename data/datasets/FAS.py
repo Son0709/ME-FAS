@@ -15,9 +15,9 @@ class FasDataset(Dataset):
         self.imgRootPath = os.path.join(self.rootPath, 'frame')
 
         if isTrain:
-            self.txtPath = os.path.join(self.rootPath, 'txt', f'{self.datasetType}_{self.labelType}_train.txt')
+            self.txtPath = os.path.join(self.rootPath, 'data', 'txt', f'{self.datasetType}_{self.labelType}_train.txt')
         else:
-            self.txtPath = os.path.join(self.rootPath, 'txt', f'{self.datasetType}_{self.labelType}_test.txt')
+            self.txtPath = os.path.join(self.rootPath, 'data', 'txt', f'{self.datasetType}_{self.labelType}_test.txt')
 
         with open(self.txtPath, 'r') as txtFile:
             self.imgNames = [imgName.strip() for imgName in txtFile.readlines()]
@@ -40,4 +40,3 @@ class FasDataset(Dataset):
             aug_img, aug1_img, aug2_img = self.transforms(originImg)
             
             return aug_img, aug1_img, aug2_img, torch.tensor(label, dtype=torch.long)
-
