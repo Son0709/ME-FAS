@@ -73,7 +73,7 @@ def do_train(
         model.train(True)
 
         ###### data prepare ######
-        img, aug1_img, aug2_img, label = train_iter.next()
+        img, aug1_img, aug2_img, label = next(train_iter)
         img, aug1_img, aug2_img, label = img.to(device), aug1_img.to(device), aug2_img.to(device), label.to(device)
 
         ###### forward ######
