@@ -30,6 +30,7 @@ if __name__ == '__main__':
         if os.path.isdir(srcPath):
             shutil.copytree(srcPath, desPath, dirs_exist_ok = True)
         else:
+            os.makedirs(os.path.dirname(desPath), exist_ok=True)  # Ensure the directory exists
             shutil.copy2(srcPath, desPath)
     
     print(f"Backup of '{srcPath}' completed to '{desPath}'.")
